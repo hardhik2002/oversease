@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header with Logo and Social Icons</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Header styling */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Logo styling */
+        .logo img {
+            max-height: 50px; /* Adjust the height as needed */
+        }
+
+        /* Social media icons styling */
+        .social-icons a {
+            color: #1c0356; /* Icon color to match the logo theme */
+            font-size: 1.5rem;
+            margin-left: 15px;
+            transition: color 0.3s ease;
+        }
+
+        /* Hover effect for icons */
+        .social-icons a:hover {
+            color: #3b057e;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <!-- Logo section -->
+        <div class="logo">
+            <img src="logo_My3Edu.png" alt="MY3 Overseas Education Logo">
+        </div>
+
+        <!-- Social media icons section -->
+        <div class="social-icons">
+            <span>Follow us:</span>
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </header>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

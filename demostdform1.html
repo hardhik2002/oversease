@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Form</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Rubik', sans-serif;
+        background-color: white;
+        color: black;
+    }
+    .form-container {
+        max-width: 70%;
+        margin: auto;
+        padding: 20px;
+    }
+    .form-header {
+        text-align: center;
+        font-weight: bold;
+        color: #1c0356;
+        margin-bottom: 20px;
+    }
+    .table-bordered th, .table-bordered td {
+        border: 1.2px solid #1c0356;
+        vertical-align: middle;
+        text-align: center;
+        padding: 5px;
+        color: #000;
+    }
+    input {
+        border: 1.2px solid #1c0356;
+        outline: none;
+        background: transparent;
+        width: 100%;
+        color: #000;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    input:not(.table-input):focus {
+        border-color: #1c0356;
+        box-shadow: 0 0 5px #1c0356;
+    }
+    .table-input {
+        border: none;
+        border-bottom: 1.2px solid #1c0356;
+    }
+    .table-input:focus {
+        border-bottom: 2px solid #1c0356;
+    }
+    
+    .budget-input, .other-input {
+        border: none;
+        border-bottom: 1.2px solid #1c0356;
+    }
+    .budget-input:focus, .other-input:focus {
+        border: none;
+        border-bottom: 2px solid #1c0356;
+        outline: none;
+        box-shadow: none;
+    }
+    hr {
+        border: 1px solid #1c0356;
+    }
+</style>
+<script>
+    // Function to ensure only one checkbox is checked per section
+    function limitCheckboxSelection(checkboxGroupName) {
+        var checkboxes = document.getElementsByName(checkboxGroupName);
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    checkboxes.forEach(function(otherCheckbox) {
+                        if (otherCheckbox !== checkbox) {
+                            otherCheckbox.checked = false;
+                        }
+                    });
+                }
+            });
+        });
+    }
+
+    // Apply the limitCheckboxSelection function to each section
+    window.onload = function() {
+        limitCheckboxSelection('callTime');
+        limitCheckboxSelection('overseasEducation');
+        limitCheckboxSelection('country');
+    };
+</script>
+</head>
+<body>
+
+<div class="container form-container">
+    <h2 class="form-header">STUDENT FORM</h2>
+
+    <!-- College Name -->
+    <div class="mb-3">
+        <label class="form-label">College Name:</label>
+        <input type="text" class="form-control" placeholder="Enter College Name">
+    </div>
+
+    <!-- Full Name, Email, Phone Number -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">Full Name:</label>
+            <input type="text" class="form-control" placeholder="Enter Full Name">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">E-Mail:</label>
+            <input type="email" class="form-control" placeholder="Enter Email">
+        </div>
+    </div>
+    
+
+    <div class="mb-3">
+        <label class="form-label">Phone Number:</label>
+        <input type="text" class="form-control" placeholder="+91 XXXXXXXXXX">
+    </div>
+    <!-- Best time to call -->
+    
+<div class="mb-3 d-flex flex-wrap">
+    <p class="me-3">Best time to call:</p>
+    <div class="form-check me-3">
+        <input class="form-check-input" type="checkbox" name="callTime" id="morning" style="transform: scale(1.2);">
+        <label for="morning" class="form-check-label">Morning</label>
+    </div>
+    <div class="form-check me-3">
+        <input class="form-check-input" type="checkbox" name="callTime" id="afternoon" style="transform: scale(1.2);">
+        <label for="afternoon" class="form-check-label">Afternoon</label>
+    </div>
+    <div class="form-check me-3">
+        <input class="form-check-input" type="checkbox" name="callTime" id="evening" style="transform: scale(1.2);">
+        <label for="evening" class="form-check-label">Evening</label>
+    </div>
+    <div class="form-check me-3">
+        <input class="form-check-input" type="checkbox" name="callTime" id="weekend" style="transform: scale(1.2);">
+        <label for="weekend" class="form-check-label">Weekend</label>
+    </div>    
+    </div>
+    <hr>
+    <!-- Education Qualifications Table -->
+    <h4 class="mb-3" style="color:#1c0356">Education Qualifications</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Details</th>
+                <th>10th</th>
+                <th>Intermediate</th>
+                <th>Bachelors / B.Tech / BE / Masters</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>School/College Name</td>
+                <td><input type="text" class="table-input"></td>
+                <td><input type="text" class="table-input"></td>
+                <td><input type="text" class="table-input"></td>
+            </tr>
+            <tr>
+                <td>Year of Passing</td>
+                <td>From: 20<input type="text" class="table-input" style="width: 50px;"> to 20<input type="text" class="table-input" style="width: 50px;"></td>
+                <td>From: 20<input type="text" class="table-input" style="width: 50px;"> to 20<input type="text" class="table-input" style="width: 50px;"></td>
+                <td>From: 20<input type="text" class="table-input" style="width: 50px;"> to 20<input type="text" class="table-input" style="width: 50px;"></td>
+            </tr>
+            <tr>
+                <td>Percentages/Backlogs</td>
+                <td><input type="text" class="table-input" style="width: 80px;"> / <input type="text" class="table-input" style="width: 80px;"></td>
+                <td><input type="text" class="table-input" style="width: 80px;"> / <input type="text" class="table-input" style="width: 80px;"></td>
+                <td><input type="text" class="table-input" style="width: 80px;"> / <input type="text" class="table-input" style="width: 80px;"></td>
+            </tr>
+            <tr>
+                <td>Academic Gap (if any)</td>
+                <td><input type="text" class="table-input" ></td>
+                <td><input type="text" class="table-input" ></td>
+                <td><input type="text" class="table-input" ></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <!-- Overseas Education Section -->
+    <div class="mb-3 d-flex align-items-center">
+        <label class="form-label me-3">Are you interested in Overseas Education:</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="overseasEducation" id="yesOption">
+            <label class="form-check-label" for="yesOption">Yes</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="overseasEducation" id="noOption">
+            <label class="form-check-label" for="noOption">No</label>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Countries Section -->
+    <div class="mb-3 d-flex flex-wrap">
+        <p class="me-3">Countries:</p>
+        <div class="form-check me-3">
+            <input class="form-check-input" type="checkbox" name="country" id="usa">
+            <label for="usa" class="form-check-label">USA</label>
+        </div>
+        <div class="form-check me-3">
+            <input class="form-check-input" type="checkbox" name="country" id="uk">
+            <label for="uk" class="form-check-label">UK</label>
+        </div>
+        <div class="form-check me-3">
+            <input class="form-check-input" type="checkbox" name="country" id="australia">
+            <label for="australia" class="form-check-label">Australia</label>
+        </div>
+        <div class="form-check me-3">
+            <input class="form-check-input" type="checkbox" name="country" id="canada">
+            <label for="canada" class="form-check-label">Canada</label>
+        </div>
+        <div class="form-check me-3">
+            <input class="form-check-input" type="checkbox" name="country" id="germany">
+            <label for="germany" class="form-check-label">Germany</label>
+        </div>
+    </div>
+
+</div> <!-- end of form-container -->
+</body>
+</html>

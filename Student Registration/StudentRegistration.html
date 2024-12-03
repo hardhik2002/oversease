@@ -1,0 +1,926 @@
+<html>
+  <head>
+    <title>Student Enquiry Form</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link to Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Link to FontAwesome for the dot icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Rubik", sans-serif;
+        background-color: white;
+        color: black;
+      }
+      hr {
+        border: 1px solid #1c0356;
+      }
+      .form-container {
+        max-width: 70%;
+        margin: auto;
+        padding: 20px;
+      }
+      .form-header {
+        font-weight: bold;
+        color: #1c0356;
+        margin-bottom: 20px;
+      }
+      input {
+        border: none;
+        border-bottom: 1.2px solid #1c0356;
+      }
+      input:focus {
+        border: none;
+        border-bottom: 2px solid #1c0356;
+        outline: none;
+        box-shadow: none;
+      }
+      select {
+        border: none;
+        border-bottom: 1px solid black;
+      }
+      .name-input {
+        border: none;
+        border-bottom: 1.2px solid #1c0356;
+      }
+      .name-input:focus {
+        border: none;
+        border-bottom: 2px solid #1c0356;
+        outline: none;
+        box-shadow: none;
+      }
+
+      .checkbox-round {
+        width: 1.1em;
+        height: 1.1em;
+        background-color: white;
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 1px solid #ddd;
+        appearance: none;
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+        transition: background 0.2s ease-in-out;
+      }
+
+      .checkbox-round:checked {
+        background-color: #1c0356;
+      }
+
+      .checkbox-round:hover {
+        background-color: #1c0356;
+      }
+
+      .error {
+        color: red;
+      }
+
+      .form-label {
+        width: 150px; /* Adjust this width as needed for alignment */
+        display: inline-block;
+      }
+      .btn-primary {
+        background-color: #1c0356;
+        border-color: #1c0356;
+      }
+      .btn-primary:hover {
+        background-color: #3b057e;
+        border-color: #3b057e;
+      }
+      /* Style checkboxes with custom color and size */
+      .custom-checkbox {
+        appearance: none; /* Remove default checkbox styling */
+        width: 20px;
+        height: 20px;
+        border: 2px solid #1c0356; /* Border color for unchecked state */
+        border-radius: 4px;
+        cursor: pointer;
+        position: relative;
+        transform: scale(1.1); /* Adjust scale as desired */
+      }
+
+      /* Checked state styling */
+      .custom-checkbox:checked {
+        background-color: #1c0356; /* Custom fill color */
+        border-color: #1c0356; /* Keep border color consistent */
+      }
+
+      /* Checkmark styling */
+      .custom-checkbox:checked::after {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 6px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+      /* Increase font size for all labels and p tags */
+      label,
+      p {
+        font-size: 1rem; /* Adjust size as needed (e.g., 1.2rem, 18px) */
+        /* Optional: increase font weight for better readability */
+        color: #1c0356; /* Optional: apply a consistent color */
+        margin-bottom: 5px; /* Optional: add spacing below each element */
+      }
+      .btn-primary {
+        background-color: #1c0356;
+        border-color: #1c0356;
+      }
+      .btn-primary:hover {
+        background-color: #3b057e;
+        border-color: #3b057e;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: white;
+        border-bottom: 1px solid #ddd;
+      }
+
+      /* Logo styling */
+      .logo img {
+        max-height: 50px; /* Adjust the height as needed */
+      }
+
+      /* Social media icons styling */
+      .social-icons a {
+        color: #1c0356; /* Icon color to match the logo theme */
+        font-size: 1.5rem;
+        margin-left: 15px;
+        transition: color 0.3s ease;
+      }
+
+      /* Hover effect for icons */
+      .social-icons a:hover {
+        color: #3b057e;
+      }
+      .table-bordered th,
+      .table-bordered td {
+        border: 1.5px solid #1c0356;
+        vertical-align: middle;
+        text-align: center;
+        padding: 5px;
+        color: #1c0356;
+      }
+
+      .table-input {
+        border: none;
+        border-bottom: 1.2px solid #1c0356;
+      }
+      .table-input:focus {
+        border-bottom: 2px solid #1c0356;
+      }
+      label,
+      p,
+      h6 {
+        font-size: 1.1rem;
+
+        color: #1c0356;
+        margin-bottom: 5px;
+      }
+      .skills-container {
+        margin-top: 20px;
+      }
+      .skills-box {
+        border: 1.5px solid #1c0356;
+        padding: 15px;
+        border-radius: 8px;
+        position: relative;
+      }
+      .skills-box h6 {
+        position: absolute;
+        top: -12px;
+        left: 15px;
+        background-color: white;
+        padding: 0 5px;
+      }
+      .upload-field {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .upload-field .upload-btn {
+        cursor: pointer;
+        color: #1c0356;
+        font-size: 1.2rem;
+      }
+
+      /* Chrome, Safari, Edge, Opera */
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      .certifications-upload {
+        margin-top: auto;
+      }
+      .rating-group input{
+        border: 2px solid #1c0356;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <!-- Logo section -->
+      <div class="logo">
+        <img src="./logo.jpeg" alt="MY3 Overseas Education Logo" />
+      </div>
+
+      <!-- Social media icons section -->
+      <div class="social-icons">
+        <span>Follow us:</span>
+        <a href="https://www.facebook.com/my3overseaseducation/about/" target="_blank"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a href="https://www.linkedin.com/company/my3tech-inc/posts/?feedView=all" target="_blank"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="https://www.instagram.com/my3overseaseducation/" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </div>
+    </header>
+    <form action="#" method="post">
+      <div class="container form-container">
+        <div class="stu-details">
+          <h2 class="form-header text-center">Student Information Form</h2>
+          <!-- First Row: College Name and Branch -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label">College Name:</label>
+              <input
+                type="text"
+                class="name-input"
+                style="width: 70%"
+                name="College Name"
+                value="Mother Theressa Engineering College"
+                disabled
+              />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Branch:</label>
+              <input
+                type="text"
+                class="name-input"
+                style="width: 70%"
+                name="Branch"
+                value="Master of Business Administration"
+                disabled
+              />
+            </div>
+          </div>
+
+          <!-- Second Row: First Name and Last Name -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label">First Name:</label>
+              <input
+                type="text"
+                class="name-input"
+                name="First Name"
+                style="width: 70%"
+                placeholder="Enter First Name"
+              />
+              <br />
+              <span class="error"></span>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Last Name:</label>
+              <input
+                type="text"
+                name="Last Name"
+                class="name-input"
+                style="width: 70%"
+                placeholder="Enter Last Name"
+              />
+              <br />
+              <span class="error"></span>
+            </div>
+          </div>
+
+          <!-- Third Row: Phone and Email -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label">Phone:</label>
+              <input
+                type="number"
+                class="phone-input"
+                name="Phone Number"
+                style="width: 70%"
+                placeholder="+91 XXXXXXXXXX"
+              />
+              <br />
+              <span class="error"></span>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email:</label>
+              <input
+                type="text"
+                class="Email-input"
+                style="width: 70%"
+                placeholder="Enter Email"
+                name="Email"
+              />
+              <br />
+              <span class="error"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Qualification Checkboxes -->
+        <div>
+          <div class="mb-3 d-flex flex-wrap Qualifications">
+            <p class="me-3">Qualification:</p>
+            <div class="form-check me-3">
+              <input
+                class="form-check-input custom-checkbox"
+                type="checkbox"
+                id="bba"
+                name="Qualification"
+                value="bba"
+              />
+              <label for="bba" class="form-check-label">BBA</label>
+            </div>
+            <div class="form-check me-3">
+              <input
+                class="form-check-input custom-checkbox"
+                type="checkbox"
+                id="bsc"
+                name="Qualification"
+                value="bsc"
+              />
+              <label for="bsc" class="form-check-label">BSC (CS)</label>
+            </div>
+            <div class="form-check me-3">
+              <input
+                class="form-check-input custom-checkbox"
+                type="checkbox"
+                id="bcom"
+                name="Qualification"
+                value="bcom"
+              />
+              <label for="bcom" class="form-check-label">BCOM (CS)</label>
+            </div>
+          </div>
+          <span class="error qualification-error"></span>
+        </div>
+
+        <!--qualification Table-->
+        <div class="education">
+          <h6 class="mb-3" style="color: #1c0356">Education Qualifications:</h6>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>10th</th>
+                <th>Intermediate</th>
+                <th>UG</th>
+                <th>MBA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="study">
+                <td>
+                  <input
+                    type="text"
+                    class="table-input"
+                    placeholder="School name"
+                    name="School Name"
+                    id="school"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    class="table-input"
+                    placeholder="College name"
+                    name="Intermediate College"
+                    id="preDegreeCollege"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    class="table-input"
+                    placeholder="College name"
+                    name="UG College"
+                    id=""
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    class="table-input"
+                    placeholder="Ex: MTEC"
+                    name="MBA College"
+                    id="undergraduateCollege"
+                  />
+                </td>
+              </tr>
+              <tr id="year-passing">
+                <td>
+                  <select name="School Year" id="">
+                    <option value="year-passing">year of passing</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="Intermediate Year" id="">
+                    <option value="year-passing">year of passing</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="UG Year" id="">
+                    <option value="year-passing">year of passing</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="MBA Year" id="">
+                    <option value="year-passing">year of passing</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                  </select>
+                </td>
+              </tr>
+              <tr id="percentage">
+                <td>
+                  <input
+                    type="number"
+                    class="table-input"
+                    style="width: 80px"
+                    placeholder="88%"
+                    name="School Percentage"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    class="table-input"
+                    style="width: 80px"
+                    placeholder="99%"
+                    name="Intermediate Percentage"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    class="table-input"
+                    style="width: 80px"
+                    step="0.1"
+                    placeholder="CGPA"
+                    name="UG CGPA"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    class="table-input"
+                    style="width: 80px"
+                    placeholder="CGPA"
+                    step="0.1"
+                    name="MBA CGPA"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <hr />
+        <!-- Skills section with two side-by-side boxes -->
+        <div class="skills-container row gap-1">
+          <!-- Soft Skills Box -->
+           <div class="col-md-6 skills-box">
+             <div class="">
+               <h6>Soft Skills</h6>
+               <div class="">
+                 <div class="d-flex align-items-center justify-content-between">
+                   <label for="oral-skills" class="form-label me-2"
+                     >Oral Skills</label
+                   >
+                   <div id="oral-skills" class="rating-group">
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="o-skill1-1"
+                       name="Oral"
+                       value="1"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="o-skill1-2"
+                       name="Oral"
+                       value="2"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="o-skill1-3"
+                       name="Oral"
+                       value="3"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="o-skill1-4"
+                       name="Oral"
+                       value="4"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="o-skill1-5"
+                       name="Oral"
+                       value="5"
+                     />
+                   </div>
+                 </div>
+                 <div class="my-3 d-flex align-items-center justify-content-between">
+                   <label for="communication-skills" class="form-label me-2"
+                     >Communication</label
+                   >
+                   <div id="communication-skills" class="rating-group">
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="c-skill1-1"
+                       name="Communication"
+                       value="1"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="c-skill1-2"
+                       name="Communication"
+                       value="2"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="c-skill1-3"
+                       name="Communication"
+                       value="3"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="c-skill1-4"
+                       name="Communication"
+                       value="4"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="c-skill1-5"
+                       name="Communication"
+                       value="5"
+                     />
+                   </div>
+                 </div>
+                 <!-- Additional skill ratings go here -->
+                 <div class="my-3 d-flex align-items-center justify-content-between">
+                   <label for="critical-skills" class="form-label me-2"
+                     >Critical thinking</label
+                   >
+                   <div id="critical-skills" class="rating-group">
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="ct-skill1-1"
+                       name="Critical"
+                       value="1"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="ct-skill1-2"
+                       name="Critical"
+                       value="2"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="ct-skill1-3"
+                       name="Critical"
+                       value="3"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="ct-skill1-4"
+                       name="Critical"
+                       value="4"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="ct-skill1-5"
+                       name="Critical"
+                       value="5"
+                     />
+                   </div>
+                 </div>
+                 <div class="my-3 d-flex align-items-center justify-content-between">
+                   <label for="time-management" class="form-label me-2"
+                     >Time management</label
+                   >
+                   <div id="time-management" class="rating-group">
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="t-skill1-1"
+                       name="Time"
+                       value="1"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="t-skill1-2"
+                       name="Time"
+                       value="2"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="t-skill1-3"
+                       name="Time"
+                       value="3"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="t-skill1-4"
+                       name="Time"
+                       value="4"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="t-skill1-5"
+                       name="Time"
+                       value="5"
+                     />
+                   </div>
+                 </div>
+                 <div class="my-3 d-flex align-items-center justify-content-between">
+                   <label for="written-skills" class="form-label me-2"
+                     >Written Skills</label
+                   >
+                   <div id="written-skills" class="rating-group">
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="w-skill1-1"
+                       name="Written"
+                       value="1"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="w-skill1-2"
+                       name="Written"
+                       value="2"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="w-skill1-3"
+                       name="Written"
+                       value="3"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="w-skill1-4"
+                       name="Written"
+                       value="4"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="w-skill1-5"
+                       name="Written"
+                       value="5"
+                     />
+                   </div>
+                 </div>
+                 <div class="my-3 d-flex align-items-center justify-content-between">
+                   <label for="problem-solving" class="form-label me-2"
+                     >Problem Solving</label
+                   >
+                   <div id="problem-solving" class="rating-group">
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="skill1-1"
+                       name="Problem"
+                       value="1"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="skill1-2"
+                       name="Problem"
+                       value="2"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="skill1-3"
+                       name="Problem"
+                       value="3"
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="skill1-4"
+                       name="Problem"
+                       value="4"                       
+                     />
+                     <input
+                       type="checkbox"
+                       class="checkbox-round"
+                       id="skill1-5"
+                       name="Problem"
+                       value="5"
+                     />
+                   </div>
+                 </div>
+               </div>
+               <div class="row">
+                 <div class="col">
+                   <span class="error checks-err"></span>
+                 </div>
+               </div>
+               
+             </div>
+           </div>
+
+           <div class="col-md-6 skills-box" style="flex: 1;">  
+             <!-- Technical Skills Box -->
+             <div class="d-flex flex-column justify-content-between" style="width: 100%; height: 100%;">
+              <div>
+                <div>
+                  <h6>Technical Skills</h6>
+                  <div class="tech-skills">
+                    <div class="form-check mb-2">
+                      <input
+                        class="form-check-input custom-checkbox"
+                        name="Technical Skills"
+                        value="Word"
+                        type="checkbox"
+                        id="msWord"
+                      />
+                      <label for="msWord" class="form-check-label">MS Word</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input
+                        class="form-check-input custom-checkbox"
+                        name="Technical Skills"
+                        value="Powerpoint"
+                        type="checkbox"
+                        id="powerPoint"
+                      />
+                      <label for="powerPoint" class="form-check-label"
+                        >PowerPoint</label
+                      >
+                    </div>
+                    <div class="form-check mb-2">
+                      <input
+                        class="form-check-input custom-checkbox"
+                        type="checkbox"
+                        id="excel"
+                        name="Technical Skills"
+                        value="Excel"
+                      />
+                      <label for="excel" class="form-check-label">Excel</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input
+                        class="form-check-input custom-checkbox"
+                        id="marketing"
+                        name="Technical Skills"
+                        value="Marketing"
+                        type="checkbox"
+                        id="excel"
+                      />
+                      <label for="marketing" class="form-check-label"
+                        >Marketing</label
+                      >
+                    </div>
+                    <div class="form-check mb-2">
+                      <input
+                        class="form-check-input custom-checkbox"
+                        type="checkbox"
+                        id="HR"
+                        name="Technical Skills"
+                        value="Human Resources"
+                      />
+                      <label for="Hr" class="form-check-label">HR</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input
+                        class="form-check-input custom-checkbox"
+                        name="Technical Skills"
+                        value="Word"
+                        type="checkbox"
+                        id="dataanalysis"
+                      />
+                      <label for="dataanalysis" class="form-check-label">Data analysis</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input
+                        class="form-check-input custom-checkbox"
+                        name="Technical Skills"
+                        value="Word"
+                        type="checkbox"
+                        id="datamining"
+                      />
+                      <label for="datamining" class="form-check-label">Data mining</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input
+                        class="form-check-input custom-checkbox"
+                        name="Technical Skills"
+                        value="Word"
+                        type="checkbox"
+                        id="statistical"
+                      />
+                      <label for="statistical" class="form-check-label">Statistical and pattern analysis</label>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <span class="error tech-error"></span>
+                </div>
+              </div>
+               
+             </div>
+           </div>
+
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary w-30 my-3 submit-button">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+    <script>
+      document.querySelectorAll(".rating-group").forEach((group) => {
+        const checkboxes = group.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((checkbox, index) => {
+          checkbox.addEventListener("change", () => {
+            checkboxes.forEach((cb, i) => {
+              //   console.log(i, index);
+              if (i <= index) {
+                cb.checked = true;
+              } else {
+                cb.checked = false;
+              }
+            });
+          });
+        });
+      });
+    </script>
+    <script src="./Validations.js"></script>
+  </body>
+</html>

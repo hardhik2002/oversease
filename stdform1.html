@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Link to FontAwesome for the dot icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Rubik", sans-serif;
+        background-color: white;
+        color: black;
+      }
+      .form-container {
+        max-width: 70%;
+        margin: auto;
+        padding: 20px;
+      }
+      .form-header {
+        font-weight: bold;
+        color: #1c0356;
+        margin-bottom: 20px;
+      }
+      .table-bordered th,
+      .table-bordered td {
+        border: 1.5px solid #1c0356;
+        vertical-align: middle;
+        text-align: center;
+        padding: 5px;
+        color: #1c0356;
+      }
+      input {
+        border: 1.2px solid #1c0356;
+        outline: none;
+        background: transparent;
+        width: 100%;
+        color: #000;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+      input:not(.table-input):focus-visible {
+        border-color: #1c0356;
+        box-shadow: 0 0 5px #1c0356;
+      }
+      .table-input {
+        border: none;
+        border-bottom: 1.2px solid #1c0356;
+      }
+      .table-input:focus {
+        border-bottom: 2px solid #1c0356;
+      }
+
+      .budget-input,
+      .other-input {
+        border: none;
+        border-bottom: 1.2px solid #1c0356;
+      }
+      .budget-input:focus,
+      .other-input:focus {
+        border: none;
+        border-bottom: 2px solid #1c0356;
+        outline: none;
+        box-shadow: none;
+      }
+      hr {
+        border: 1px solid #1c0356;
+      }
+      .btn-primary {
+        background-color: #1c0356;
+        border-color: #1c0356;
+      }
+      .btn-primary:hover {
+        background-color: #3b057e;
+        border-color: #3b057e;
+      }
+      label,
+      p,
+      h5 {
+        font-size: 1.1rem;
+
+        color: #1c0356;
+        margin-bottom: 5px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: white;
+        border-bottom: 1px solid #ddd;
+      }
+
+      /* Logo styling */
+      .logo img {
+        max-height: 50px; /* Adjust the height as needed */
+      }
+
+      /* Social media icons styling */
+      .social-icons a {
+        color: #1c0356; /* Icon color to match the logo theme */
+        font-size: 1.5rem;
+        margin-left: 15px;
+        transition: color 0.3s ease;
+      }
+
+      /* Hover effect for icons */
+      .social-icons a:hover {
+        color: #3b057e;
+      }
+      .custom-checkbox {
+        appearance: none; /* Remove default checkbox styling */
+        width: 20px;
+        height: 20px;
+        border: 2px solid #1c0356; /* Border color for unchecked state */
+        border-radius: 4px;
+        cursor: pointer;
+        position: relative;
+        transform: scale(1.1); /* Adjust scale as desired */
+      }
+
+      /* Checked state styling */
+      .custom-checkbox:checked {
+        background-color: #1c0356; /* Custom fill color */
+        border-color: #1c0356; /* Keep border color consistent */
+      }
+
+      /* Checkmark styling */
+      .custom-checkbox:checked::after {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 6px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+    </style>
+    <!-- <script>
+    // Function to ensure only one checkbox is checked per section
+    function limitCheckboxSelection(checkboxGroupName) {
+        var checkboxes = document.getElementsByName(checkboxGroupName);
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    checkboxes.forEach(function(otherCheckbox) {
+                        if (otherCheckbox !== checkbox) {
+                            otherCheckbox.checked = false;
+                        }
+                    });
+                }
+            });
+        });
+    } -->
+
+    <!-- // Apply the limitCheckboxSelection function to each section
+    window.onload = function() {
+        limitCheckboxSelection('callTime');
+        limitCheckboxSelection('overseasEducation');
+        limitCheckboxSelection('country');
+        limitCheckboxSelection('intake');
+        limitCheckboxSelection('tests');
+        limitCheckboxSelection('courses');
+    }; -->
+    <!-- </script> -->
+  </head>
+  <body>
+    <header class="header">
+      <!-- Logo section -->
+      <div class="logo">
+        <img src="logo_My3Edu.png" alt="MY3 Overseas Education Logo" />
+      </div>
+
+      <!-- Social media icons section -->
+      <div class="social-icons">
+        <span>Follow us:</span>
+        <a href="https://www.facebook.com" target="_blank"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a href="https://www.linkedin.com" target="_blank"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="https://www.instagram.com" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </div>
+    </header>
+
+    <div class="container form-container">
+      <h2 class="form-header">STUDENT FORM</h2>
+
+      <!-- College Name -->
+      <div class="mb-3">
+        <label class="form-label">College Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Mother Theressa Engineering College"
+        />
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <lable class="form-label">Branch:</lable>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Master of Business Administration"
+          />
+        </div>
+      </div>
+
+      <!-- Full Name, Email, Phone Number -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <lable class="form-label">Full Name:</lable>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Full Name"
+          />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label">E-Mail:</label>
+          <input type="email" class="form-control" placeholder="Enter Email" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Phone Number:</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="+91 XXXXXXXXXX"
+            max="10"
+          />
+        </div>
+      </div>
+      <!--Best time to call-->
+
+      <!-- <div class="mb-3 d-flex flex-wrap">
+    <p class="me-3">Best time to call:</p>
+    <div class="form-check me-3">
+        
+        <input class="form-check-input custom-checkbox" type="checkbox" id="ielts" style="transform: scale(1.2);" name="callTime">
+        <label for="ielts" class="form-check-label">Morning</label>
+    </div>
+    <div class="form-check me-3">
+        <input class="form-check-input custom-checkbox" type="checkbox" id="toefl" style="transform: scale(1.2);" name="callTime">
+        <label for="toefl" class="form-check-label">Afternoon</label>
+    </div>
+    <div class="form-check me-3">
+        <input class="form-check-input custom-checkbox" type="checkbox" id="duolingo" style="transform: scale(1.2);" name="callTime">
+        <label for="duolingo" class="form-check-label">Evening</label>
+    </div>
+    <div class="form-check me-3">
+        <input class="form-check-input custom-checkbox" type="checkbox" id="pte" style="transform: scale(1.2);" name="callTime">
+        <label for="pte" class="form-check-label">Weekend</label>
+    </div>    
+    </div> -->
+      <hr />
+      <!-- Education Qualifications Table -->
+      <h4 class="mb-3" style="color: #1c0356">Education Qualifications</h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Details</th>
+            <th>10th</th>
+            <th>Intermediate</th>
+            <th>Bachelors / B.Tech / BE / Masters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>School/College Name</td>
+            <td>
+              <input
+                type="text"
+                class="table-input"
+                placeholder="School name"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                class="table-input"
+                placeholder="College name"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                class="table-input"
+                placeholder="College name"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Year of Passing</td>
+            <td>
+              From: 20<input
+                type="text"
+                class="table-input"
+                style="width: 50px"
+                maxlength="2"
+                placeholder="18"
+              />
+              to 20<input
+                type="text"
+                class="table-input"
+                style="width: 50px"
+                placeholder="19"
+              />
+            </td>
+            <td>
+              From: 20<input
+                type="text"
+                class="table-input"
+                style="width: 50px"
+                maxlength="2"
+                placeholder="20"
+              />
+              to 20<input
+                type="text"
+                class="table-input"
+                style="width: 50px"
+                placeholder="23"
+              />
+            </td>
+            <td>
+              From: 20<input
+                type="text"
+                class="table-input"
+                style="width: 50px"
+                maxlength="2"
+                placeholder="24"
+              />
+              to 20<input
+                type="text"
+                class="table-input"
+                style="width: 50px"
+                placeholder="29"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Percentages</td>
+            <td>
+              <input
+                type="text"
+                class="table-input"
+                style="width: 80px"
+                placeholder="88%"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                class="table-input"
+                style="width: 80px"
+                placeholder="99%"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                class="table-input"
+                style="width: 80px"
+                placeholder="60%"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr />
+
+      <!-- Countries Section -->
+      <h5 class="my-3">Select Interested Countries from below:</h5>
+
+      <div class="mb-3 d-flex flex-wrap">
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="usa"
+            style="transform: scale(1.2)"
+            name="country"
+          />
+          <label for="usa" class="form-check-label">USA</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="uk"
+            style="transform: scale(1.2)"
+            name="country"
+          />
+          <label for="uk" class="form-check-label">UK</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="canada"
+            style="transform: scale(1.2)"
+            name="country"
+          />
+          <label for="canada" class="form-check-label">CANADA</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="australia"
+            style="transform: scale(1.2)"
+            name="country"
+          />
+          <label for="australia" class="form-check-label">AUSTRALIA</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="newZealand"
+            style="transform: scale(1.2)"
+            name="country"
+          />
+          <label for="newZealand" class="form-check-label">NEW ZEALAND</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="europe"
+            style="transform: scale(1.2)"
+            name="country"
+          />
+          <label for="europe" class="form-check-label">EUROPE</label>
+        </div>
+      </div>
+
+      <!-- Intakes Section -->
+      <h5 class="my-3">Target Intake for Admission:</h5>
+
+      <div class="mb-3 d-flex flex-wrap">
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="spring"
+            style="transform: scale(1.2)"
+            name="intake"
+          />
+          <label for="spring" class="form-check-label">Spring/January</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="fall"
+            style="transform: scale(1.2)"
+            name="intake"
+          />
+          <label for="fall" class="form-check-label">Fall/August</label>
+        </div>
+      </div>
+
+      <!-- Tests Section -->
+      <h5 class="my-3">Have you taken any international tests?</h5>
+
+      <div class="mb-3 d-flex flex-wrap">
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="ielts"
+            style="transform: scale(1.2)"
+            name="tests"
+          />
+          <label for="ielts" class="form-check-label">Yes</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="toefl"
+            style="transform: scale(1.2)"
+            name="tests"
+          />
+          <label for="toefl" class="form-check-label">No</label>
+        </div>
+      </div>
+      <div class="mb-3 d-flex flex-wrap">
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="ielts"
+            style="transform: scale(1.2)"
+            name="tests"
+          />
+          <label for="ielts" class="form-check-label">IELTS</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="toefl"
+            style="transform: scale(1.2)"
+            name="tests"
+          />
+          <label for="toefl" class="form-check-label">TOEFL</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="duolingo"
+            style="transform: scale(1.2)"
+            name="tests"
+          />
+          <label for="duolingo" class="form-check-label">Duolingo</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="pte"
+            style="transform: scale(1.2)"
+            name="tests"
+          />
+          <label for="pte" class="form-check-label">PTE</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="gre"
+            style="transform: scale(1.2)"
+            name="tests"
+          />
+          <label for="gre" class="form-check-label">GRE</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="gmat"
+            style="transform: scale(1.2)"
+            name="tests"
+          />
+          <label for="gmat" class="form-check-label">GMAT</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="sat"
+            style="transform: scale(1.2)"
+            name="tests"
+          />
+          <label for="sat" class="form-check-label">SAT</label>
+        </div>
+      </div>
+
+      <!-- Test Scores Section -->
+      <h5 class="my-3">If yes, mention test scores:</h5>
+      <div class="mb-3">
+        <label for="ieltsScore">IELTS: </label>
+        <input
+          type="text"
+          id="ieltsScore"
+          class="form-control d-inline-block"
+          style="width: 100px"
+          placeholder="/9"
+        />
+        <label for="toeflScore" class="ms-3">TOEFL: </label>
+        <input
+          type="text"
+          id="toeflScore"
+          class="form-control d-inline-block"
+          style="width: 100px"
+          placeholder="/120"
+        />
+        <label for="duolingoScore" class="ms-3">Duolingo: </label>
+        <input
+          type="text"
+          id="duolingoScore"
+          class="form-control d-inline-block"
+          style="width: 100px"
+          placeholder="/140"
+        />
+        <label for="pteScore" class="ms-3">PTE: </label>
+        <input
+          type="text"
+          id="pteScore"
+          class="form-control d-inline-block"
+          style="width: 100px"
+          placeholder="/90"
+        />
+        <label for="greScore" class="ms-3">GRE: </label>
+        <input
+          type="text"
+          id="greScore"
+          class="form-control d-inline-block"
+          style="width: 100px"
+          placeholder="/340"
+        />
+        <label for="gmatScore" class="ms-3 my-3">GMAT: </label>
+        <input
+          type="text"
+          id="gmatScore"
+          class="form-control d-inline-block"
+          style="width: 100px"
+          placeholder="/800"
+        />
+        <label for="satScore" class="ms-3">SAT: </label>
+        <input
+          type="text"
+          id="satScore"
+          class="form-control d-inline-block"
+          style="width: 100px"
+          placeholder="/1600"
+        />
+      </div>
+
+      <!-- Intended Courses Section -->
+      <h5 class="my-3">Intended Courses:</h5>
+      <div class="mb-3 d-flex flex-wrap">
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="cs"
+            name="courses"
+          />
+          <label for="cs" class="form-check-label">CS</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="ds"
+            name="courses"
+          />
+          <label for="ds" class="form-check-label">DS</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="ai_ml"
+            name="courses"
+          />
+          <label for="ai_ml" class="form-check-label">AI/ML</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="da"
+            name="courses"
+          />
+          <label for="da" class="form-check-label">DA</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="ba"
+            name="courses"
+          />
+          <label for="ba" class="form-check-label">BA</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="mba"
+            name="courses"
+          />
+          <label for="mba" class="form-check-label">MBA</label>
+        </div>
+        <div class="form-check me-3">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="public_health"
+            name="courses"
+          />
+          <label for="public_health" class="form-check-label"
+            >Public Health</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="sciences"
+            name="courses"
+          />
+          <label for="sciences" class="form-check-label">Science</label>
+        </div>
+      </div>
+      <div class="mb-3 d-flex align-items-center">
+        <div class="form-check me-2">
+          <input
+            class="form-check-input custom-checkbox"
+            type="checkbox"
+            id="otherCoursesCheckbox"
+          />
+          <label for="otherCourses" class="form-label">Other:</label>
+        </div>
+        <input type="text" id="otherCourses" class="other-input" />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-30">Submit Review</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
